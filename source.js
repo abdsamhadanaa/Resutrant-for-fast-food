@@ -33,8 +33,9 @@ while(x>count){
 			di.appendChild(price);
 			meal.innerHTML=allData[count].m;
 			price.innerHTML=allData[count].p;
-			hold.push(allData[count].m);
-			hold.push(allData[count].p);
+			hold.push({meal:allData[count].m
+				,price:allData[count].p});//
+			//hold.push(allData[count].p);
 
 
 			var d=document.createElement("INPUT");
@@ -46,12 +47,10 @@ while(x>count){
 			console.log(d);
 			}
 		}
-/*
 
-document.querySelectorAll(".subfather").forEach(item => {
-	console.log(item);
-	
-  item.addEventListener('change', event => {
+
+
+  	/*
   	if(event.target.checked){
   		console.log("Dalia")
   	}
@@ -70,26 +69,29 @@ document.querySelectorAll(".subfather").forEach(item => {
   		++c;
   		}}
   		console.log("hhhh");
+  		*/
 
   	
 
-})
 
-})
-*/
 
 var cBtn=document.getElementById("cl");
 cBtn.addEventListener("click",clear);
 function clear(){
 document.querySelectorAll('.subfather').forEach(item =>{
-item.parentNode.removeChild(item);	
+item.parentNode.removeChild(item);
+var count=0;
+hold.splice(0,hold.length);
+
+
 })
 }
 function getElment(e){
-	var data=e.target.value;
+		var data=e.target.value;
 	var result=hold.filter((x)=>{
-		return x===data;
+		return x.meal===data;
+
 	});
-	alert(result.join("")
-		);
+	alert(result[0].meal +" "+result[0].price +" I like it :)" );
+		
 }
